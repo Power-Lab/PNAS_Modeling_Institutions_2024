@@ -1,0 +1,5 @@
+﻿fromto_perMW,TwoH_AC,ThreeH_AC,FiveH_AC,FiveH_DC
+TwoH_AC,1,0.0866,0.0954,1.2856
+ThreeH_AC,1,1,0.1126,1.2856
+FiveH_AC,1,1,1,1.2856
+FiveH_DC,1,1,1,1

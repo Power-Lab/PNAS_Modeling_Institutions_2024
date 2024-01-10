@@ -1,0 +1,17 @@
+﻿Network_Lines,z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,Line_Max_Flow_MW,transmission_path_name,distance_mile,Line_Reinforcement_Cost_per_MWyr,Status,NewOld,Project
+1,0,0,0,0,1,0,0,0,0,-1,0,0,3500,NM_to_SoCal,672.95,10.7167,Not_likely,new,Centennial West Clean Line
+2,0,0,0,0,0,1,0,0,0,0,-1,0,1500,NV_to_UT,264.71,2.5942,Likely,new,Cross-Tie
+3,0,0,0,0,0,0,0,0,0,0,1,-1,1500,UT_to_WY,348.75,3.4177,Very_likely,new,Gateway South
+4,0,0,1,0,0,0,0,0,0,0,0,-1,3000,ID_to_WY,363.61,3.5634,Very_likely,new,Gateway West
+5,1,0,0,0,-1,0,0,0,0,0,0,0,1000,AZ_to_NM,292.39,2.8654,Very_likely,new,Southline
+6,1,0,0,0,0,0,0,0,-1,0,0,0,1000,AZ_to_SD_IID,265.54,2.6022,Likely,new,Southwest Powerlink HVDC Conversion
+7,1,0,0,0,-1,0,0,0,0,0,0,0,4500,AZ_to_NM,292.39,2.8654,Likely,new,SunZia
+8,0,0,1,0,0,-1,0,0,0,0,0,0,2000,ID_to_NV,330.4,3.2379,Likely,new,SWIP North
+9,0,0,0,0,0,1,0,0,0,0,0,-1,3000,NV_to_WY,549.03,5.3805,Very_likely,new,TransWest Express
+10,0,0,0,0,0,0,0,0,0,0,1,-1,3000,UT_to_WY,348.75,3.4177,Not_likely,new,Zephyr
+11,0,0,1,0,0,0,0,-1,0,0,0,0,2250,ID_to_PNW,312.01,3.0577,Likely,new,Boardman - Hemingway
+12,1,0,0,0,0,0,0,0,0,-1,0,0,3200,AZ_to_SoCal,333.33,5.3083,Likely,new,Delaney - Colorado River (Ten West Link)
+13,0,1,0,0,0,0,0,0,0,0,0,-1,850,CO_to_WY,291.47,2.8564,Not_likely,new,Wyoming - Colorado Intertie
+14,0,0,0,0,0,1,-1,0,0,0,0,0,500,NV_to_NorCal,258.74,4.1204,Not_likely,new,Great Basin - HVDC
+15,1,0,0,0,0,0,0,0,-1,0,0,0,1250,AZ_to_SD_IID,265.54,2.6022,Very_likely,new,North Gila - Imperial Valley #2
+16,0,0,0,1,0,-1,0,0,0,0,0,0,3000,MT_to_NV,662.11,6.4886,Not_likely,new,Chinook

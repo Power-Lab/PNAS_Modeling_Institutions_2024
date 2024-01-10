@@ -1,0 +1,5 @@
+﻿Voltages,Line_cost_per_mile,Sub_fixed_cost,Sub_cost_per_MW
+TwoH_AC,11.1672,26.7811,0.0607
+ThreeH_AC,15.6366,36.5999,0.0866
+FiveH_AC,22.335,46.4194,0.1126
+FiveH_DC,17.8778,,1.2856

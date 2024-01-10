@@ -1,0 +1,4 @@
+﻿Parameter,Value,Type
+MIPGap,0.0001,Double
+TimeLimit,91800,Double
+Method,2,Integer

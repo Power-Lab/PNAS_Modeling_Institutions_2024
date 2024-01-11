@@ -1,0 +1,9 @@
+Index,Zone,Region,Resource,OptValues
+4,1,AZ,hydroelectric_pumped_storage,1722.3969000000002
+11,1,AZ,solar_thermal_with_energy_storage,1680.0
+15,2,CO,hydroelectric_pumped_storage,4479.1875
+48,6,NV,solar_thermal_with_energy_storage,660.0
+53,7,NorCal,hydroelectric_pumped_storage,18130.954700000002
+63,8,PNW,hydroelectric_pumped_storage,2500.382
+72,9,SD_IID,hydroelectric_pumped_storage,334.446
+82,10,SoCal,hydroelectric_pumped_storage,12923.949

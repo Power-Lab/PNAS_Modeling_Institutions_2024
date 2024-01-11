@@ -1,0 +1,12 @@
+Component,Values
+eFixCostGen,2.742592514797321e6
+eFixCostStor,794305.603807785
+eFixCostLine,188003.85197825573
+eNewACCost,0.0
+eNewDCCost,0.0
+eACtoACUpgradeCost,0.0
+eACtoDCUpgradeCost_1,0.0
+eACtoDCUpgradeCost_2,0.0
+eVarCostGen,427063.01847764954
+eNSECosts,78344.44569351396
+eStartCostUC,7752.99143535397

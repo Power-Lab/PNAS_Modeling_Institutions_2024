@@ -1,5 +1,3 @@
-
-# function RecordCSV(gencap, linecap, unitc, flowdec, unmetdec, stres, allcap, conting, newlv, pickchange, powerchange)
 function RecordCSV(gencap, linecap, unitc, flowdec, unmetdec, stres, allcap, newlv, pickchange, powerchange)
 
     for var in gencap
@@ -94,25 +92,6 @@ function RecordCSV(gencap, linecap, unitc, flowdec, unmetdec, stres, allcap, new
     end
     insertcols!(allcap_aggregate, 1, :Types => colnames[2:end])
     CSV.write(string(resultpath, "allcap_aggregate.csv"), allcap_aggregate)
-
-    # contingency = DataFrame()
-    # if length(value.(conting).data) > 1
-    #     contingency.Index = first(axes(value.(conting)))
-    #     contingency.OptValues = value.(conting).data
-    # elseif length(value.(conting).data) == 1
-    #     contingency.OptValues = [value.(conting).data]
-    # else
-    #     nothing
-    # end
-    # if region_scenario == "baseline"
-    #     contingency.Index = first(axes(value.(conting)))
-    #     contingency.OptValues = value.(conting).data
-    # elseif region_scenario == "expandedEIM" || region_scenario == "regionalized"
-    #     contingency.OptValues = [value.(conting)]
-    # else
-    #     nothing
-    # end
-    # CSV.write(string(resultpath, "contingency.csv"), contingency)
 
     newlineinv = DataFrame()
     for (index, var) in enumerate(newlv)

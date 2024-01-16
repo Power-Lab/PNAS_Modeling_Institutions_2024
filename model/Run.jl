@@ -1,9 +1,4 @@
-
 using JuMP, PyPlot, DataFrames, CSV, Gurobi, Missings, PyCall, Statistics, TimerOutputs # Importing required packages
-
-##### Two-stage #####
-two_stage = false
-#####################
 
 # runname = first(split(last(split(@__FILE__, "/")), "."))
 runname = ARGS[1]
@@ -37,15 +32,6 @@ end
 
 transcost_sens = actfilename[5]
 
-# year_scenario = 2050 # 2030 or 2050
-# transmission_scenario = "baseline" # or baseline or expanded
-# policy_scenario = "state" # or state or regionalrps or regionalces
-# region_scenario = "baseline" # or baseline or expandedEIM or regionalized
-
-# Path information
-# mainloc = "/Users/Kucuksayacigil/Desktop/WECC-model/"
-# mainloc = "/oasis/tscc/scratch/fkucuksayacigil/WECC-model/"
-# mainloc = abspath(joinpath(@__DIR__, ".."))
 mainloc = abspath(joinpath(@__DIR__))
 
 # Solver parameters

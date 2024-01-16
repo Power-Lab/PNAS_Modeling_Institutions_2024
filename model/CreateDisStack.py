@@ -1,5 +1,3 @@
-
-# def CreateDisStack(rpathname):
 def CreateDisStack(rpathname, fname, sname):
 
     import matplotlib.pyplot as plt
@@ -10,10 +8,6 @@ def CreateDisStack(rpathname, fname, sname):
     figsize2 = 10
     fs = 18
     dotperinch = 900
-
-    # disp = pd.read_csv("/Users/Kucuksayacigil/Desktop/Results/dispatch_raw.csv")
-    # dispatch = disp.to_dict('series')
-    # dispatch.pop('Hour', None)
 
     # with open(rpathname + 'dispatch_agg.csv', newline = '') as csvfile:
     with open(rpathname + fname + '.csv', newline = '') as csvfile:

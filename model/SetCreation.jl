@@ -1,7 +1,3 @@
-
-# setEDNEWGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.New_Build .== 1), :R_ID] # Set of economic dispatch generators to be build
-# setEDOLDGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.New_Build .== 0), :R_ID] # Set of economic dispatch generators available for retirement
-# setEDSTABLEGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.New_Build .== -1), :R_ID] # Set of economic dispatch generators with constant capacity
 setEDNEWGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.LHYDRO .== 0) .& (generators.New_Build .== 1), :R_ID] # Set of economic dispatch generators to be build
 setEDOLDGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.LHYDRO .== 0) .& (generators.New_Build .== 0), :R_ID] # Set of economic dispatch generators available for retirement
 setEDSTABLEGEN = generators[(generators.STOR .== 0) .& (generators.Commit .== 0) .& (generators.LHYDRO .== 0) .& (generators.New_Build .== -1), :R_ID] # Set of economic dispatch generators with constant capacity
@@ -84,16 +80,6 @@ setNONDISPRENEW =  intersect(setRENEW, setNONDISP)
 # setDISPRENEW = generators[(generators.RENEW .== 1) .& (generators.NONDISP .== 0), :R_ID]
 setNONUCDISP = generators[(generators.Commit .== 0) .& (generators.NONDISP .== 0), :R_ID]
 
-# Define BigM parameters
-# bigMucnew = maximum(generators.num_units[setUCNEWGEN])
-# bigMucold = maximum(generators.num_units[setUCOLDGEN])
-
-# largestunit = []
-# allolduc = generators[union(setUCOLDGEN, setUCSTABLEGEN), [:zone, :Cap_size]]
-# for rnum in collect(1:length(region_names))
-#     push!(largestunit, maximum(allolduc[allolduc.zone .== rnum, :Cap_size]))
-# end
-
 # Set of upgrade options for old transmission lines
 # numoptions = length(findall(t -> occursin("Count", t), names(network)))
 setCHANGEOPT = collect(1:last(size(voltage_count)))
@@ -142,36 +128,3 @@ for x in ["TwoH_AC", "ThreeH_AC", "FiveH_AC"]
 end
 maxnewuc_regional = generators[first(findall(t -> occursin("naturalgas_cc", t), generators.technology)), :Cap_Size]
 contn1_regional = maximum([maxuc_regional, maxline_regional, maxnewuc_regional])
-
-# voltagenum  = DataFrame()
-# voltagenum.Options = setCHANGEOPT
-# volnum = Int[]
-# for x in names(voltage_count)
-#     if occursin("TwoH_AC", x)
-#         push!(volnum, 230)
-#     elseif occursin("ThreeH_AC", x)
-#         push!(volnum, 345)
-#     elseif occursin("FiveH_AC", x)
-#         push!(volnum, 500)
-#     elseif occursin("FiveH_DC", x)
-#         push!(volnum, 500)
-#     else
-#         nothing
-#     end
-# end
-# voltagenum.Numbers = volnum
-
-# mintypeexpo = []
-# maxtypeexpo = []
-# for x in setLHYDRO
-#     if generators.MinType[x] == "exponential"
-#         push!(mintypeexpo, x)
-#     else
-#         nothing
-#     end
-#     if generators.MaxType[x] == "exponential"
-#         push!(maxtypeexpo, x)
-#     else
-#         nothing
-#     end
-# end

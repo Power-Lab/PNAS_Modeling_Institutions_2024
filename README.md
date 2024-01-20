@@ -1,4 +1,4 @@
-This repository contains the data and code to reproduce engineering-economic optimization (EEO) modeling results from our study titled [**"Simulating institutional heterogeneity in sustainability science"**](link here). All code is written using the [Julia](link here) and [Python] (link here).
+This repository contains the data and code to reproduce the engineering-economic optimization (EEO) modeling results from the study **"Simulating institutional heterogeneity in sustainability science"**. Optimization code is written using [JuMP](https://jump.dev/JuMP.jl/dev/) for [Julia](https://julialang.org/) and data processing and figures are generated using [Python](https://www.python.org/).
 
 # File organization
 
@@ -23,6 +23,6 @@ It includes Julia code to run EEO model and replicate the corresponding results 
 
 # Reproducing EEO results
 
-There exist two ways of reproducing the results. One is to run the model in a TORQUE environment, and the other is to run in local machines.
+There exist two ways of reproducing the results. One is to run the model in a TORQUE environment, and the other is to run on a local machine.
 
 To run the model in TORQUE, make sure that Julia and Gurobi are installed. Put folders `data` and `model` in the same directory, and then submit either of two bash files in `model/batch`.

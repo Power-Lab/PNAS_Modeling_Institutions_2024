@@ -43,14 +43,10 @@ end
 
 setZONE = unique(generators.Zone) # Set of zones
 setLINE = collect(1:first(size(network))) # Set of all transmission lines (existing plus new right of ways)
-# setOLDLINE = collect(1:first(size(network))-numnewline) # Set of existing transmission lines
 setOLDLINE = network[network.NewOld .== "old", :Network_Lines]
-# setNEWLINE = collect(first(size(network))-numnewline+1:first(size(network))) # Set of new transmission lines
 setNEWLINE = network[network.NewOld .== "new", :Network_Lines]
 
 # Determine the set of lines for which hurdle is 0
-# region_zone = dropmissing(select(network,[:Region_description, :Network_zones]))
-# subnetwork = select(network, region_zone.Network_zones)
 subnetwork = select(network, reg_zone.Network_zones)
 insertcols!(subnetwork, 1, :Network_Lines => network.Network_Lines)
 
@@ -77,23 +73,7 @@ setRENEW = generators[generators.RENEW .== 1, :R_ID]
 setCES = generators[generators.CES .== 1, :R_ID]
 setNONDISP = generators[generators.NONDISP .== 1, :R_ID]
 setNONDISPRENEW =  intersect(setRENEW, setNONDISP)
-# setDISPRENEW = generators[(generators.RENEW .== 1) .& (generators.NONDISP .== 0), :R_ID]
 setNONUCDISP = generators[(generators.Commit .== 0) .& (generators.NONDISP .== 0), :R_ID]
-
-# Set of upgrade options for old transmission lines
-# numoptions = length(findall(t -> occursin("Count", t), names(network)))
-setCHANGEOPT = collect(1:last(size(voltage_count)))
-setCHANGEOPT_DC = findfirst(t -> occursin("DC", t), names(voltage_count))
-setCHANGEOPT_AC = setdiff(setCHANGEOPT, setCHANGEOPT_DC)
-coltemp = []
-for x in 1:last(size(row_costs))
-    if (row_costs[1,x] >= row_costs[1,:FiveH_DC])
-        push!(coltemp, x)
-    else
-        nothing
-    end
-end
-setCHANGEOPT_ACROWLESSDC = setdiff(setCHANGEOPT_AC, coltemp)
 
 contn1 = []
 for z in setZONE

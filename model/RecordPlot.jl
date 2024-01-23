@@ -1,7 +1,6 @@
 
 function RecordPlot(varforbar, unmetdec, poweramount, chargeamount)
 
-   @timeit to "create_Bar_and_Line_plots" begin
    for filename in varforbar[1:4]
 
       optresult = CSV.read(string(resultpath, filename), DataFrame)
@@ -148,89 +147,7 @@ function RecordPlot(varforbar, unmetdec, poweramount, chargeamount)
                     rpath = resultpath)
    end
 
-
-   newlineres = CSV.read(string(resultpath, varforbar[9]), DataFrame)
-   filter!(row -> (row.vCAPNEWAC > 0) .| (row.vNUMNEWAC > 0) .| (row.vCAPNEWDC > 0) .| (row.vNUMNEWDC > 0),  newlineres)
-   ind_newline = collect(1:first(size(newlineres)))
-
-   barnames = newlineres.Path
-
-   CreateBarLine(isbarplot = true,
-                 fname = "newline_MW.csv",
-                 barnumbers = ind_newline,
-                 plotvalues_one = newlineres.vCAPNEWAC,
-                 plotvalues_two = newlineres.vCAPNEWDC,
-                 barnam = barnames,
-                 ylab = "MW",
-                 xlab = "Paths",
-                 tlab = "Capacity of New Lines",
-                 leglab = ["AC", "DC"],
-                 rpath = resultpath)
-
-   CreateBarLine(isbarplot = true,
-                 fname = "newline_units.csv",
-                 barnumbers = ind_newline,
-                 plotvalues_one = newlineres.vNUMNEWAC,
-                 plotvalues_two = newlineres.vNUMNEWDC,
-                 barnam = barnames,
-                 ylab = "Number of lines",
-                 xlab = "Paths",
-                 tlab = "Number of New Lines",
-                 leglab = ["AC", "DC"],
-                 rpath = resultpath)
-
-
-   if transcost_sens != "linear"
-      if isfile(resultpath, varforbar[10]) == true
-         upgnum = CSV.read(string(resultpath, varforbar[10]), DataFrame)
-         upgmw = CSV.read(string(resultpath, varforbar[11]), DataFrame)
-
-         indupgnum = collect(1:first(size(upgnum)))
-         indupgmw = collect(1:first(size(upgmw)))
-
-         barnames_num = String[]
-         for row in eachrow(upgnum)
-            # push!(barnames_num, string(row.Line, "_", row.FromVol, "_", row.ToVol))
-            push!(barnames_num, string(row.Path, "_", row.FromVol, "_", row.ToVol))
-         end
-
-         barnames_mw = String[]
-         for row in eachrow(upgmw)
-            # push!(barnames_mw, string(row.Line, "_", row.FromVol, "_", row.ToVol))
-            push!(barnames_mw, string(row.Path, "_", row.FromVol, "_", row.ToVol))
-         end
-
-         CreateBarLine(isbarplot = true,
-                       fname = "upgraded_line_number.csv",
-                       barnumbers = indupgnum,
-                       plotvalues_one = upgnum.OptVal,
-                       plotvalues_two = nothing,
-                       barnam = barnames_num,
-                       ylab = "Number of upgraded lines",
-                       xlab = "Path _ Initial Voltage _ Final Voltage",
-                       tlab = "Number of Upgraded Lines",
-                       leglab = nothing,
-                       rpath = resultpath)
-
-         CreateBarLine(isbarplot = true,
-                       fname = "upgraded_line_MW.csv",
-                       barnumbers = indupgmw,
-                       plotvalues_one = upgmw.OptVal,
-                       plotvalues_two = nothing,
-                       barnam = barnames_mw,
-                       ylab = "MW",
-                       xlab = "Path _ Initial Voltage _ Final Voltage",
-                       tlab = "Capacity of Upgraded Lines",
-                       leglab = nothing,
-                       rpath = resultpath)
-      else
-         nothing
-      end
-   else
-      nothing
-   end
-
-   allcap_aggregate = CSV.read(string(resultpath, varforbar[12]), DataFrame)
+   allcap_aggregate = CSV.read(string(resultpath, varforbar[9]), DataFrame)
 
    for rname in region_names
       CreateBarLine(isbarplot = true,
@@ -245,8 +162,7 @@ function RecordPlot(varforbar, unmetdec, poweramount, chargeamount)
                    leglab = nothing,
                    rpath = resultpath)
    end
-   end # End of create_Bar_and_Line_plots time tracking
 
-   @timeit to "create_Stack_plots" begin ProcessDispatch(poweramount, chargeamount) end
+   ProcessDispatch(poweramount, chargeamount)
 
 end

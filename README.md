@@ -25,4 +25,38 @@ It includes Julia code to run EEO model and replicate the corresponding results 
 
 There exist two ways of reproducing the results. One is to run the model in a TORQUE environment, and the other is to run in local machines.
 
-To run the model in TORQUE, make sure that Julia and Gurobi are installed. Put folders `data` and `model` in the same directory, and then submit either of two bash files in `model/batch`.
+## To run the model in TORQUE
+
+1. Make sure that Julia and Gurobi are installed.
+2. Put folders `data` and `model` in the same directory.
+
+To replicate heterogeneity results,
+
+3. Uncomment `Line 116` in `ExpansionModel.jl`
+4. Submit `m2050_tbaseline_pregionalces_rbaseline_linear.sh` in `model/batch`.
+
+To replicate reference results,
+
+3. Comment `Line 116` in `ExpansionModel.jl`
+4. Submit `m2050_tbaseline_pregionalces_rregionalized_linear.sh` in `model/batch`.
+
+## To run the model in local machines
+
+1. Make sure that Julia and Gurobi are installed.
+2. Put folders `data` and `model` in the same directory.
+
+To replicate heterogeneity results,
+
+3. Uncomment `Line 116` in `ExpansionModel.jl`
+4. Change `runname` variable in `Line 4` of `Run.jl` to `m2050_tbaseline_pregionalces_rbaseline_linear`
+5. Create an empty folder in `model/batch` with name `Results_m2050_tbaseline_pregionalces_rbaseline_linear`
+6. Create an empty folder in `model/batch/Results_m2050_tbaseline_pregionalces_rbaseline_linear` with name `Dispatch`.
+7. Run `Run.jl` file.
+
+To replicate reference results,
+
+3. Comment `Line 116` in `ExpansionModel.jl`
+4. Change `runname` variable in `Line 4` of `Run.jl` to `m2050_tbaseline_pregionalces_rregionalized_linear`
+5. Create an empty folder in `model/batch` with name `Results_m2050_tbaseline_pregionalces_rregionalized_linear`
+6. Create an empty folder in `model/batch/Results_m2050_tbaseline_pregionalces_rregionalized_linear` with name `Dispatch`.
+7. Run `Run.jl` file.

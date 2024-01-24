@@ -5,15 +5,19 @@ runname = ARGS[1]
 actfilename = split(runname, "_")
 
 # Scenario creation
+global year_scenario = 0
 global policy_scenario = "none"
 global region_scenario = "none"
 
 for spart in actfilename[1:4]
 
+    global year_scenario
     global policy_scenario
     global region_scenario
 
-    if spart[1] == 'p'
+    if spart[1] == 'm'
+        year_scenario = parse(Int64, spart[2:end])
+    elseif spart[1] == 'p'
         policy_scenario = string(spart[2:end])
     elseif spart[1] == 'r'
         region_scenario = string(spart[2:end])

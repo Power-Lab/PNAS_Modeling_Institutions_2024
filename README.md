@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10569867.svg)](https://doi.org/10.5281/zenodo.10569867)
+
 This repository contains the data and code to reproduce the engineering-economic optimization (EEO) modeling results from the study **"Simulating institutional heterogeneity in sustainability science"**. Optimization code is written using [JuMP](https://jump.dev/JuMP.jl/dev/) for [Julia](https://julialang.org/) and data processing and figures are generated using [Python](https://www.python.org/).
 
 # File organization
